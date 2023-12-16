@@ -76,4 +76,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af140a308de3a024ba3ce6dd442e1a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instantiateOnLoad: []
+  isWin: 0
+  isDead: 0
+  ending: {fileID: 3594881321711398295, guid: f53bbddd20f84034e9eb1ff97722ad98, type: 3}
