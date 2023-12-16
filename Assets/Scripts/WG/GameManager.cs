@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,7 +19,6 @@ public class GameManager : MonoBehaviour
 
     Transform playerTF;
 
-    [SerializeField] GameObject ending;
 
     private void Awake()
     {
@@ -35,14 +35,13 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         playerTF = GameObject.FindWithTag("Player").transform;
-        Instantiate(ending, transform.position, Quaternion.identity);
-        ending.SetActive(false);
     }
     private void Update()
     {
         if (isWin)
         {
-            ending.SetActive(true);
+            if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("Ending"))
+                SceneManager.LoadScene("Ending");
         }
 
         if (isDead)
