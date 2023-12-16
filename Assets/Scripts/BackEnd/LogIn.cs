@@ -26,7 +26,7 @@ public class LogIn : MonoBehaviour
 
     void Start()
     {
-        nickname = "PlayerC";
+        nickname = "PlayerE";
         loginButton.SetActive(true);
         createRoomButton.SetActive(false);
         searchRoomButton.SetActive(false);

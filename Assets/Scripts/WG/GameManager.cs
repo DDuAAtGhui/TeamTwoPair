@@ -1,3 +1,4 @@
+using BackEnd.Tcp;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
     public bool isWin = false;
 
     public Queue<GameObject> deadmen = new Queue<GameObject>();
+    public Queue<SessionId> deadmenQueue = new Queue<SessionId>();
 
     public Dictionary<string, float> heightDic = new Dictionary<string, float>();
 
@@ -42,6 +44,10 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        if (isWin)
+        {
+
+        }
 
         if (GameObject.Find("ServerManager"))
             StartCoroutine(SendDataRoutine());
@@ -58,5 +64,9 @@ public class GameManager : MonoBehaviour
     public void GetMessage(string nickname, float height)
     {
         heightDic[nickname] = height;
+    }
+    public void DeadPlayer(SessionId sessionId)
+    {
+        deadmenQueue.Enqueue(sessionId);
     }
 }
