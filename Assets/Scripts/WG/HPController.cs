@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HPController : MonoBehaviour
 {
-    float maxHP = 100.0f;
+    [SerializeField] float maxHP = 100.0f;
     float initialHP;
     [SerializeField] float currentHP = 0;
     [SerializeField] float autoRecoveryHp = 0.9f;
@@ -24,7 +24,7 @@ public class HPController : MonoBehaviour
             //현재 체력 재생
             currentHP += autoRecoveryHp * Time.deltaTime;
         }
-        Debug.Log("maxHP : " + maxHP);
+      //  Debug.Log("maxHP : " + maxHP);
     }
 
 

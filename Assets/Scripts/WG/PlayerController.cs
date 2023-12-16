@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+
         if (moveDir != Vector2.zero)
         {
             if (moveDir.x != 0 && moveDir.y != 0)
@@ -65,7 +66,11 @@ public class PlayerController : MonoBehaviour
 
             if (damageLength <= 0)
             {
-                hpController.MaxHP -= damageMultiplier / (hpController.InitialHP * 2 / hpController.MaxHP);
+                float hpDecrease = damageMultiplier / (hpController.InitialHP * 2 / hpController.MaxHP);
+
+                hpDecrease = Mathf.Clamp(hpDecrease, damageMultiplier, float.MaxValue);
+
+                hpController.MaxHP -= hpDecrease;
                 damageLength = initialDamageLength;
             }
         }
@@ -74,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
         flowerAnim.SetBool("isCharging", isCharging);
         flowerAnim.SetBool("isMaxCharging", isMaxCharging);
-        Debug.Log(hpController.MaxHP);
+        // Debug.Log(hpController.MaxHP);
     }
 
     void OnMove(InputValue value)

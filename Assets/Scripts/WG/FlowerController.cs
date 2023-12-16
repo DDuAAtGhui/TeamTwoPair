@@ -20,9 +20,10 @@ public class FlowerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Item"))
         {
-            ItemData itemData = collision.GetComponent<ItemMovement>().itemData;
+            ItemData itemData = collision.GetComponent<ItemMovement>()?.itemData;
 
-            hpController.MaxHP += itemData.addHP;
+            if (itemData != null)
+                hpController.MaxHP += itemData.addHP;
 
             Destroy(collision.gameObject);
         }

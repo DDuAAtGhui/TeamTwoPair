@@ -8,7 +8,7 @@ public class EndLine : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("EndLine"))
         {
-            GameManager.Instance.isWin = true;
+            GameManager.instance.isWin = true;
         }
     }
 }
