@@ -26,7 +26,7 @@ public class LogIn : MonoBehaviour
 
     void Start()
     {
-        nickname = "PlayerE";
+        nickname = "PlayerZ";
         loginButton.SetActive(true);
         createRoomButton.SetActive(false);
         searchRoomButton.SetActive(false);
@@ -52,6 +52,7 @@ public class LogIn : MonoBehaviour
     public void GuestLogIn()
     {
         var bro = Backend.BMember.CustomLogin(nickname, nickname);
+        Debug.Log(nickname);
 
         if (bro.IsSuccess())
         {
