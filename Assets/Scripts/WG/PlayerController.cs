@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [Header("Move info")]
-    [SerializeField] float growSpeed = 1f;
+    [SerializeField] public float growSpeed = 1f;
     float initialGrowSpeed;
     [SerializeField] float damageLength = 0.1f;
     [SerializeField] float damageMultiplier = 10f;
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
 
             if (damageLength <= 0)
             {
-                hpController.MaxHP -= damageMultiplier;
+                hpController.MaxHP -= damageMultiplier / (hpController.InitialHP * 2 / hpController.MaxHP);
                 damageLength = initialDamageLength;
             }
         }
@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
         if (hpController.CurrentHP > 0 && isDashAble)
         {
             StartCoroutine(Dash());
-            hpController.CurrentHP -= 40;
+            hpController.CurrentHP -= 10;
         }
     }
 
@@ -143,7 +143,7 @@ public class PlayerController : MonoBehaviour
             yield return null;
             if (!isAttackAble)
             {
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.2f);
                 isAttackAble = true;
             }
         }
@@ -172,7 +172,7 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator ToggleDashAble()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         isDashAble = true;
     }
 

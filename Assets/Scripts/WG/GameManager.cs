@@ -7,6 +7,11 @@ public class GameManager : MonoBehaviour
     static GameManager instance;
 
     [SerializeField] List<GameObject> instantiateOnLoad;
+
+    public bool isWin = false;
+
+    public Queue<GameObject> deadmen = new Queue<GameObject>();
+
     public static GameManager Instance
     {
         get
