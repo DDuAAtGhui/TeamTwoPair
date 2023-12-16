@@ -51,16 +51,11 @@ public class GameManager : MonoBehaviour
         }
 
         if (GameObject.Find("ServerManager"))
-            StartCoroutine(SendDataRoutine());
+            InGame.GetInstance().SendData(playerTF.transform.position.y);
 
 
         else
             Debug.Log("서버매니저 씬에 존재하지않음");
-    }
-    IEnumerator SendDataRoutine()
-    {
-        InGame.GetInstance().SendData(playerTF.position.y);
-        yield return new WaitForSeconds(0.5f);
     }
     public void GetMessage(string nickname, float height)
     {
