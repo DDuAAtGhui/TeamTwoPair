@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
     }
+
+    float deadSceneChangeTImer = 3f;
     private void Start()
     {
         playerTF = GameObject.FindWithTag("Player").transform;
@@ -46,7 +48,13 @@ public class GameManager : MonoBehaviour
 
         if (isDead)
         {
+            deadSceneChangeTImer -= Time.deltaTime;
 
+            if (deadSceneChangeTImer <= 0f)
+            {
+                deadSceneChangeTImer = 3f;
+                SceneManager.LoadScene(0);
+            }
         }
 
         if (GameObject.Find("ServerManager"))
