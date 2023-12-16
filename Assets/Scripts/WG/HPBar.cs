@@ -26,10 +26,13 @@ public class HPBar : MonoBehaviour
     {
         currentHpImage.fillAmount = hpController.CurrentHP / (float)hpController.MaxHP;
 
+
+
         currentHpImage.GetComponent<RectTransform>()
             .SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, hpController.MaxHP * width);
 
-        maxHpImage.GetComponent<RectTransform>()
-            .SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, hpController.MaxHP * width);
+        if (hpController.MaxHP > 0)
+            maxHpImage.GetComponent<RectTransform>()
+                .SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, hpController.MaxHP * width);
     }
 }
