@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class HPController : MonoBehaviour
 {
-    int maxHP = 100;
-    [SerializeField] int currentHP = 0;
-
+    float maxHP = 100.0f;
+    [SerializeField] float currentHP = 0;
+    [SerializeField] float autoRecoveryHp = 0.9f;
     void Start()
     {
         currentHP = maxHP;
@@ -16,10 +16,16 @@ public class HPController : MonoBehaviour
     private void Update()
     {
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+
+        if (currentHP < maxHP)
+        {
+            //현재 체력 재생
+            currentHP += autoRecoveryHp * Time.deltaTime;
+        }
     }
 
 
-    public int MaxHP { get { return maxHP; } set { maxHP = value; } }
-    public int CurrentHP { get { return currentHP; } set { currentHP = value; } }
+    public float MaxHP { get { return maxHP; } set { maxHP = value; } }
+    public float CurrentHP { get { return currentHP; } set { currentHP = value; } }
 
 }
