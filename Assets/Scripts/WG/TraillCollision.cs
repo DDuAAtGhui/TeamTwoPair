@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(TrailRenderer))]
 public class TraillCollision : MonoBehaviour
 {
     TrailRenderer myTrail;
-
+    [SerializeField] GameObject trailShadow;
     //트레일 렌더러 특성상 콜라이더를 다른오브젝트에 붙이고 그걸 가져오기
     GameObject coliderGameObject;
 
@@ -25,6 +28,16 @@ public class TraillCollision : MonoBehaviour
     void Update()
     {
         SetColliderPointsFromTrail(myTrail, myCollider);
+
+        if (PlayerController.moveDir != Vector2.zero)
+        {
+            GameObject trailShadow = ObjectPool.instance.objectsQueue.Dequeue();
+
+            trailShadow.transform.position = transform.position;
+            trailShadow.SetActive(true);
+
+
+        }
     }
 
     void SetColliderPointsFromTrail(TrailRenderer trail, EdgeCollider2D edge)

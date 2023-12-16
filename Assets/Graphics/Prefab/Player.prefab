@@ -35,6 +35,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 564307814653066632}
   - {fileID: 2579528364854316466}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -164,7 +165,11 @@ MonoBehaviour:
   chargingTime: 1.5
   chargingTimer: 0
   isFire: 0
+  isDash: 0
+  isDashAble: 1
+  dashTimer: 0.1
   hpController: {fileID: 1538081554541238538}
+  flower: {fileID: 516485797646151130}
   flowerAnim: {fileID: 8683215697737839791}
 --- !u!96 &8605333168546473347
 TrailRenderer:
@@ -175,7 +180,7 @@ TrailRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5449849003969133409}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 2
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -264,7 +269,7 @@ TrailRenderer:
     textureMode: 1
     textureScale: {x: 1, y: 1}
     shadowBias: 0.5
-    generateLightingData: 0
+    generateLightingData: 1
   m_MinVertexDistance: 0.1
   m_MaskInteraction: 0
   m_Autodestruct: 0
@@ -282,6 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38406290f00fb7145a15699e8e01b583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trailShadow: {fileID: 5363232927586198523, guid: 443308ba832a7bd4c9c2bd6723b3e225, type: 3}
 --- !u!114 &1538081554541238538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,6 +301,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHP: 0
+--- !u!1 &9175487708146409299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 564307814653066632}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &564307814653066632
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9175487708146409299}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8393785058613520169}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8317039951892986628
 PrefabInstance:
   m_ObjectHideFlags: 0
