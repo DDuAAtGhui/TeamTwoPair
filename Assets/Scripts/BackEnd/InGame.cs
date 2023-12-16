@@ -11,6 +11,30 @@ using UnityEngine.SceneManagement;
 
 public class InGame : MonoBehaviour
 {
+    static InGame instance;
+
+    public static InGame GetInstance()
+    {
+        if (instance == null)
+        {
+            Debug.LogError("인스턴스가 존재하지 않음");
+            return null;
+        }
+
+        return instance;
+    }
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(instance);
+        }
+        instance = this;
+
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     MatchInGameRoomInfo currentGameRoomInfo;
     Dictionary<string, MatchUserGameRecord> inGameUserList = new Dictionary<string, MatchUserGameRecord>();
 
