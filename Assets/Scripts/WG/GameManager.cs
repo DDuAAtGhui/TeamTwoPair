@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    static GameManager instance;
+    public static GameManager instance;
 
     [SerializeField] List<GameObject> instantiateOnLoad;
 
@@ -16,23 +16,18 @@ public class GameManager : MonoBehaviour
 
     Transform playerTF;
 
-    public static GameManager Instance
+    private void Awake()
     {
-        get
+        if (instance != null)
         {
-            if (instance != null)
-            {
-                Destroy(instance.gameObject);
-            }
-            else
-            {
-                instance = new GameManager();
-                DontDestroyOnLoad(instance.gameObject);
-            }
-            return instance;
+            Destroy(instance.gameObject);
         }
-    }
 
+        else
+            instance = this;
+
+        DontDestroyOnLoad(gameObject);
+    }
     private void Start()
     {
         playerTF = GameObject.FindWithTag("Player").transform;

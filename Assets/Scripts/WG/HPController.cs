@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HPController : MonoBehaviour
 {
-    float maxHP = 100.0f;
+    [SerializeField] float maxHP = 100.0f;
     float initialHP;
     [SerializeField] float currentHP = 0;
     [SerializeField] float autoRecoveryHp = 0.9f;
