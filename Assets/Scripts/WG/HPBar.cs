@@ -10,6 +10,7 @@ public class HPBar : MonoBehaviour
     [SerializeField] Image currentHpImage;
     [SerializeField] Image maxHpImage;
 
+    [SerializeField] float width = 2.33f;
     void Awake()
     {
         hpController = GameObject.FindObjectOfType<HPController>();
@@ -26,9 +27,9 @@ public class HPBar : MonoBehaviour
         currentHpImage.fillAmount = hpController.CurrentHP / (float)hpController.MaxHP;
 
         currentHpImage.GetComponent<RectTransform>()
-            .SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, hpController.MaxHP * 4);
+            .SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, hpController.MaxHP * width);
 
         maxHpImage.GetComponent<RectTransform>()
-            .SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, hpController.MaxHP * 4);
+            .SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, hpController.MaxHP * width);
     }
 }

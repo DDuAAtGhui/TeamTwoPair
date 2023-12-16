@@ -16,12 +16,13 @@ public class HPController : MonoBehaviour
     private void Update()
     {
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);
-
+        maxHP = Mathf.Clamp(maxHP, 0, 800);
         if (currentHP < maxHP)
         {
             //현재 체력 재생
             currentHP += autoRecoveryHp * Time.deltaTime;
         }
+        Debug.Log("maxHP : " + maxHP);
     }
 
 
