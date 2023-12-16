@@ -161,7 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   growSpeed: 10
   damageLength: 0.05
-  damageMultiplier: 1
+  damageMultiplier: 0.5
   chargingTime: 1.5
   chargingTimer: 0
   isFire: 0
@@ -288,6 +288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHP: 0
+  autoRecoveryHp: 0.9
 --- !u!1001 &1650548767432682690
 PrefabInstance:
   m_ObjectHideFlags: 0
