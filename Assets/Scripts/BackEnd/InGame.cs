@@ -7,6 +7,7 @@ using BackEnd.Tcp;
 using LitJson;
 using System;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class InGame : MonoBehaviour
 {
@@ -68,6 +69,7 @@ public class InGame : MonoBehaviour
 
                     inGameUserList.Add(list.m_nickname, list);
                 }
+
             }
             else
             {
@@ -106,6 +108,9 @@ public class InGame : MonoBehaviour
 
         Debug.Log($"5-1. JoinGameRoom 게임룸 접속 요청 : 토큰({currentGameRoomInfo.m_inGameRoomToken}");
         Backend.Match.JoinGameRoom(currentGameRoomInfo.m_inGameRoomToken);
+
+        //Game 씬 로드
+        SceneManager.LoadScene(1);
     }
 
     // 릴레이할 데이터
@@ -137,7 +142,7 @@ public class InGame : MonoBehaviour
         }
 
         Message message = new Message();
-        message.height = 8.0f;
+        message.height = 11.0f;
 
         var jsonData = JsonUtility.ToJson(message); // 클래스를 json으로 변환해주는 함수
         var dataByte = System.Text.Encoding.UTF8.GetBytes(jsonData); // json을 byte[]로 변환해주는 함수
