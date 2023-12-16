@@ -161,6 +161,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   growSpeed: 10
+  damageLength: 1
+  hpController: {fileID: 1538081554541238538}
 --- !u!96 &8605333168546473347
 TrailRenderer:
   serializedVersion: 3

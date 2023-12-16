@@ -6,18 +6,29 @@ using UnityEngine.UI;
 public class HPBar : MonoBehaviour
 {
     HPController hpController;
-    Image image;
+
+    [SerializeField] Image currentHpImage;
+    [SerializeField] Image maxHpImage;
+
     void Awake()
     {
-        image = GetComponent<Image>();
         hpController = GameObject.FindObjectOfType<HPController>();
 
     }
 
     void Update()
     {
-
-        image.fillAmount = hpController.CurrentHP / (float)hpController.MaxHP;
+        ImageControll();
     }
 
+    private void ImageControll()
+    {
+        currentHpImage.fillAmount = hpController.CurrentHP / (float)hpController.MaxHP;
+
+        currentHpImage.GetComponent<RectTransform>()
+            .SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, hpController.MaxHP * 4);
+
+        maxHpImage.GetComponent<RectTransform>()
+            .SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, hpController.MaxHP * 4);
+    }
 }
