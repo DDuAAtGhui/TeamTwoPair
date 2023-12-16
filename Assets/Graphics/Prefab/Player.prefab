@@ -492,7 +492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 770132761a6e40b4a8279b1af60c452b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hPController: {fileID: 1538081554541238538}
+  hpController: {fileID: 1538081554541238538}
 --- !u!61 &6085178565137142923
 BoxCollider2D:
   m_ObjectHideFlags: 0
