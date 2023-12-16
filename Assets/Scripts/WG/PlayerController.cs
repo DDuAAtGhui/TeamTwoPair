@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float growSpeed = 1f;
     float initialGrowSpeed;
     [SerializeField] float damageLength = 0.1f;
-    [SerializeField] int damageMultiplier = 10;
+    [SerializeField] float damageMultiplier = 10f;
     [HideInInspector] public static Vector2 moveDir;
     float initialDamageLength;
 
