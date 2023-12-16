@@ -2,6 +2,7 @@ using BackEnd.Tcp;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] List<GameObject> instantiateOnLoad;
 
     public bool isWin = false;
+    public bool isDead = false;
 
     public Queue<GameObject> deadmen = new Queue<GameObject>();
     public Queue<SessionId> deadmenQueue = new Queue<SessionId>();
@@ -17,6 +19,8 @@ public class GameManager : MonoBehaviour
     public Dictionary<string, float> heightDic = new Dictionary<string, float>();
 
     Transform playerTF;
+
+    CustomInputAction customInputAction;
 
     private void Awake()
     {
@@ -33,18 +37,15 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         playerTF = GameObject.FindWithTag("Player").transform;
-
-        if (instantiateOnLoad.Count <= 0)
-            return;
-
-        foreach (GameObject go in instantiateOnLoad)
-        {
-            Instantiate(go);
-        }
     }
     private void Update()
     {
         if (isWin)
+        {
+
+        }
+
+        if (isDead)
         {
 
         }
