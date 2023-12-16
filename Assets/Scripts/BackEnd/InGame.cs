@@ -30,7 +30,8 @@ public class InGame : MonoBehaviour
             if (args.ErrInfo == ErrorInfo.Success)
             {
                 Debug.Log("4-2. OnSessionJoinInServer 게임 서버 접속 성공 : " + args.ToString());
-                Debug.Log("이제 게임방에 접속할 수 있습니다!");
+                Debug.Log("이제 게임방에 접속합니다");
+                JoinGameRoom();
             }
             else
             {
