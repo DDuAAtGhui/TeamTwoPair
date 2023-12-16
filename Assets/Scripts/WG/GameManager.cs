@@ -8,8 +8,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    [SerializeField] List<GameObject> instantiateOnLoad;
-
     public bool isWin = false;
     public bool isDead = false;
 
@@ -20,7 +18,7 @@ public class GameManager : MonoBehaviour
 
     Transform playerTF;
 
-    CustomInputAction customInputAction;
+    [SerializeField] GameObject ending;
 
     private void Awake()
     {
@@ -37,12 +35,14 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         playerTF = GameObject.FindWithTag("Player").transform;
+        Instantiate(ending, transform.position, Quaternion.identity);
+        ending.SetActive(false);
     }
     private void Update()
     {
         if (isWin)
         {
-
+            ending.SetActive(true);
         }
 
         if (isDead)
