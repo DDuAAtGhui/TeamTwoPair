@@ -899,6 +899,34 @@ public partial class @CustomInputAction: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Dead"",
+            ""id"": ""748b2671-7863-4d2e-884c-99f0537b9a60"",
+            ""actions"": [
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""2ffa206a-8bc5-4826-b864-5d7c7185f3d7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""9e31ac4c-eac4-42b2-bcee-08ee20e87810"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -983,6 +1011,9 @@ public partial class @CustomInputAction: IInputActionCollection2, IDisposable
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        // Dead
+        m_Dead = asset.FindActionMap("Dead", throwIfNotFound: true);
+        m_Dead_Newaction = m_Dead.FindAction("New action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1236,6 +1267,52 @@ public partial class @CustomInputAction: IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // Dead
+    private readonly InputActionMap m_Dead;
+    private List<IDeadActions> m_DeadActionsCallbackInterfaces = new List<IDeadActions>();
+    private readonly InputAction m_Dead_Newaction;
+    public struct DeadActions
+    {
+        private @CustomInputAction m_Wrapper;
+        public DeadActions(@CustomInputAction wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Newaction => m_Wrapper.m_Dead_Newaction;
+        public InputActionMap Get() { return m_Wrapper.m_Dead; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DeadActions set) { return set.Get(); }
+        public void AddCallbacks(IDeadActions instance)
+        {
+            if (instance == null || m_Wrapper.m_DeadActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_DeadActionsCallbackInterfaces.Add(instance);
+            @Newaction.started += instance.OnNewaction;
+            @Newaction.performed += instance.OnNewaction;
+            @Newaction.canceled += instance.OnNewaction;
+        }
+
+        private void UnregisterCallbacks(IDeadActions instance)
+        {
+            @Newaction.started -= instance.OnNewaction;
+            @Newaction.performed -= instance.OnNewaction;
+            @Newaction.canceled -= instance.OnNewaction;
+        }
+
+        public void RemoveCallbacks(IDeadActions instance)
+        {
+            if (m_Wrapper.m_DeadActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IDeadActions instance)
+        {
+            foreach (var item in m_Wrapper.m_DeadActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_DeadActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public DeadActions @Dead => new DeadActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -1301,5 +1378,9 @@ public partial class @CustomInputAction: IInputActionCollection2, IDisposable
         void OnRightClick(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+    }
+    public interface IDeadActions
+    {
+        void OnNewaction(InputAction.CallbackContext context);
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -32,9 +33,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Animator flowerAnim;
     Rigidbody2D rb;
 
+    public CustomInputAction inputActions;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        inputActions = new CustomInputAction();
+
     }
     void Start()
     {
@@ -42,10 +47,10 @@ public class PlayerController : MonoBehaviour
         initialDamageLength = damageLength;
 
         StartCoroutine(ToggleAttackable());
+
     }
     void Update()
     {
-
         if (moveDir != Vector2.zero)
         {
             if (moveDir.x != 0 && moveDir.y != 0)
@@ -180,5 +185,4 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         isDashAble = true;
     }
-
 }
