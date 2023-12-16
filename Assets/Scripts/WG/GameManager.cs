@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
     static GameManager instance;
 
     [SerializeField] List<GameObject> instantiateOnLoad;
-
     public static GameManager Instance
     {
         get
@@ -34,5 +33,9 @@ public class GameManager : MonoBehaviour
         {
             Instantiate(go);
         }
+    }
+    private void Update()
+    {
+        InGame.GetInstance().SendData();
     }
 }
