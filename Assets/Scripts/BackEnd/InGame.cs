@@ -15,6 +15,16 @@ public class InGame : MonoBehaviour
 
     private int[] grade;
 
+    public HashSet<string> deadPlayerCheck = new HashSet<string>();
+    public Stack<SessionId> deadmanStack = new Stack<SessionId>();
+    public Dictionary<string, PlayerData> playerDataDic = new Dictionary<string, PlayerData>();
+    public class PlayerData
+    {
+        public string nickname;
+        public SessionId sessionId;
+        public float height;
+    }
+
     public static InGame GetInstance()
     {
         if (instance == null)
@@ -144,6 +154,7 @@ public class InGame : MonoBehaviour
     // 릴레이할 데이터
     public class Message
     {
+        public int action;
         public float height;
 
         public override string ToString()
@@ -165,6 +176,42 @@ public class InGame : MonoBehaviour
 
                 Debug.Log(args.From.NickName + "님은 현재 : " + msg.height + "m 입니다");
                 GameManager.instance.GetMessage(args.From.NickName, msg.height);
+
+                if (msg.action == 0)
+                {
+                    if(deadPlayerCheck.Contains(args.From.NickName))
+                    {
+                        return;
+                    }
+
+                    if(playerDataDic.ContainsKey(args.From.NickName))
+                    {
+                        PlayerData playerData = new PlayerData();
+                        playerData.nickname = args.From.NickName;
+                        playerData.sessionId = args.From.SessionId;
+                        playerData.height = height;
+
+                        playerDataDic.Add(args.From.NickName, playerData);
+                    }
+                    else
+                    {
+                        playerDataDic[args.From.NickName].height = height;
+                    }
+                }
+                else if (msg.action == 1)
+                {
+                    deadPlayerCheck.Add(args.From.NickName);
+                    deadmanStack.Push(args.From.SessionId);
+                    playerDataDic.Remove(args.From.NickName);
+                }
+                else if (msg.action == 2)
+                {
+                    MatchEnd(args.From.SessionId);
+                }
+                else
+                {
+                    Debug.LogError("아직 할당되지 않는 msg 입니다" + msg.ToString());
+                }
             };
         }
 
@@ -176,7 +223,27 @@ public class InGame : MonoBehaviour
         Backend.Match.SendDataToInGameRoom(dataByte);
     }
 
-    public void MatchEnd()
+    public void SendImDead()
+    {
+        Message message = new Message();
+        message.action = 1;
+
+        var jsonData = JsonUtility.ToJson(message); // 클래스를 json으로 변환해주는 함수
+        var dataByte = System.Text.Encoding.UTF8.GetBytes(jsonData); // json을 byte[]로 변환해주는 함수
+        Backend.Match.SendDataToInGameRoom(dataByte);
+    }
+
+    public void SendImWin()
+    {
+        Message message = new Message();
+        message.action = 2;
+
+        var jsonData = JsonUtility.ToJson(message); // 클래스를 json으로 변환해주는 함수
+        var dataByte = System.Text.Encoding.UTF8.GetBytes(jsonData); // json을 byte[]로 변환해주는 함수
+        Backend.Match.SendDataToInGameRoom(dataByte);
+    }
+
+    public void MatchEnd(SessionId winnerSessionId)
     {
         Backend.Match.OnLeaveInGameServer = (MatchInGameSessionEventArgs args) =>
         {
@@ -201,14 +268,35 @@ public class InGame : MonoBehaviour
                 Debug.LogError("8-2. OnMatchResult 실패 : " + args.ErrInfo.ToString());
             }
         };
+
         Debug.Log("8-1. MatchEnd 호출");
+
         MatchGameResult matchGameResult = new MatchGameResult();
         matchGameResult.m_winners = new List<SessionId>();
 
-        foreach (var session in inGameUserList)
+
+        
+        while(playerDataDic.Count > 0)
         {
-            // 순서는 무관합니다.
-            matchGameResult.m_winners.Add(session.Value.m_sessionId);
+            float tempHeight = 0;
+            string tempNick = "";
+
+            foreach (var playerData in playerDataDic)
+            {
+                if (playerData.Value.height > tempHeight)
+                {
+                    tempHeight = playerData.Value.height;
+                    tempNick = playerData.Value.nickname;
+                }
+            }
+
+            matchGameResult.m_winners.Add(playerDataDic[tempNick].sessionId);
+            playerDataDic.Remove(tempNick);
+        }
+        
+        while(deadmanStack.Count > 0)
+        {
+            matchGameResult.m_winners.Add(deadmanStack.Pop());
         }
 
         Backend.Match.MatchEnd(matchGameResult);
