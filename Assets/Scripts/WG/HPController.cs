@@ -24,7 +24,7 @@ public class HPController : MonoBehaviour
             //현재 체력 재생
             currentHP += autoRecoveryHp * Time.deltaTime;
         }
-        Debug.Log("maxHP : " + maxHP);
+      //  Debug.Log("maxHP : " + maxHP);
     }
 
 
