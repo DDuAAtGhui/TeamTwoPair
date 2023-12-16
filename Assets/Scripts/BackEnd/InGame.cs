@@ -13,6 +13,8 @@ public class InGame : MonoBehaviour
 {
     static InGame instance;
 
+    private int[] grade;
+
     public static InGame GetInstance()
     {
         if (instance == null)
@@ -92,6 +94,8 @@ public class InGame : MonoBehaviour
                     }
 
                     inGameUserList.Add(list.m_nickname, list);
+
+                    ///inGameUserList[0].m_isSuperGamer
                 }
 
             }
@@ -148,7 +152,7 @@ public class InGame : MonoBehaviour
         }
     }
 
-    public void SendData()
+    public void SendData(float height)
     {
         if (Backend.Match.OnMatchRelay == null)
         {
@@ -157,25 +161,14 @@ public class InGame : MonoBehaviour
                 var strByte = System.Text.Encoding.Default.GetString(args.BinaryUserData);
                 Message msg = JsonUtility.FromJson<Message>(strByte);
                 Debug.Log($"서버에서 받은 데이터 : {args.From.NickName} : {msg.ToString()}");
-
-                if (msg.height >= 10.0f)
-                {
-                    MatchEnd();
-                }
             };
         }
-
         Message message = new Message();
-        message.height = 11.0f;
+        message.height = height;
 
         var jsonData = JsonUtility.ToJson(message); // 클래스를 json으로 변환해주는 함수
         var dataByte = System.Text.Encoding.UTF8.GetBytes(jsonData); // json을 byte[]로 변환해주는 함수
         Backend.Match.SendDataToInGameRoom(dataByte);
-
-        if (message.height >= 10.0f)
-        {
-            MatchEnd();
-        }
     }
 
     public void MatchEnd()
@@ -206,7 +199,6 @@ public class InGame : MonoBehaviour
         Debug.Log("8-1. MatchEnd 호출");
         MatchGameResult matchGameResult = new MatchGameResult();
         matchGameResult.m_winners = new List<SessionId>();
-        matchGameResult.m_losers = new List<SessionId>();
 
         foreach (var session in inGameUserList)
         {
