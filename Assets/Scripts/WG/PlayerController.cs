@@ -127,8 +127,6 @@ public class PlayerController : MonoBehaviour
                 chargingTimer -= Time.deltaTime;
                 chargingTimer = Mathf.Clamp(chargingTimer, 0, chargingTime);
 
-                growSpeed = initialGrowSpeed * (chargingTimer / chargingTime);
-
                 if (chargingTimer <= 0)
                 {
                     isMaxCharging = true;

@@ -7,6 +7,7 @@ using BackEnd.Tcp;
 using LitJson;
 using System;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class InGame : MonoBehaviour
 {
@@ -68,6 +69,7 @@ public class InGame : MonoBehaviour
 
                     inGameUserList.Add(list.m_nickname, list);
                 }
+
             }
             else
             {
@@ -106,17 +108,19 @@ public class InGame : MonoBehaviour
 
         Debug.Log($"5-1. JoinGameRoom 게임룸 접속 요청 : 토큰({currentGameRoomInfo.m_inGameRoomToken}");
         Backend.Match.JoinGameRoom(currentGameRoomInfo.m_inGameRoomToken);
+
+        //Game 씬 로드
+        SceneManager.LoadScene(1);
     }
 
     // 릴레이할 데이터
     public class Message
     {
-        public string userId;
         public float height;
 
         public override string ToString()
         {
-            return (userId + ',' + height);
+            return height.ToString();
         }
     }
 
@@ -129,15 +133,25 @@ public class InGame : MonoBehaviour
                 var strByte = System.Text.Encoding.Default.GetString(args.BinaryUserData);
                 Message msg = JsonUtility.FromJson<Message>(strByte);
                 Debug.Log($"서버에서 받은 데이터 : {args.From.NickName} : {msg.ToString()}");
+
+                if (msg.height >= 10.0f)
+                {
+                    MatchEnd();
+                }
             };
         }
 
         Message message = new Message();
-        //message.message = _inputField.text;
+        message.height = 11.0f;
 
         var jsonData = JsonUtility.ToJson(message); // 클래스를 json으로 변환해주는 함수
         var dataByte = System.Text.Encoding.UTF8.GetBytes(jsonData); // json을 byte[]로 변환해주는 함수
         Backend.Match.SendDataToInGameRoom(dataByte);
+
+        if (message.height >= 10.0f)
+        {
+            MatchEnd();
+        }
     }
 
     public void MatchEnd()

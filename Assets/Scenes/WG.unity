@@ -654,7 +654,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4026548699050033356, guid: e6de33cb017026b42a40932cffe541dc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.502877
+      value: -1.9895197e-13
       objectReference: {fileID: 0}
     - target: {fileID: 4453406954201231194, guid: e6de33cb017026b42a40932cffe541dc, type: 3}
       propertyPath: m_BoundingShape2D
@@ -677,6 +677,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 970147573632779908, guid: 5d0d877fc17e22b48ae7185f7a306ebd, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 970147573632779908, guid: 5d0d877fc17e22b48ae7185f7a306ebd, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 970147573632779908, guid: 5d0d877fc17e22b48ae7185f7a306ebd, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 970147573632779908, guid: 5d0d877fc17e22b48ae7185f7a306ebd, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 970147573632779908, guid: 5d0d877fc17e22b48ae7185f7a306ebd, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 970147573632779908, guid: 5d0d877fc17e22b48ae7185f7a306ebd, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 970147573632779908, guid: 5d0d877fc17e22b48ae7185f7a306ebd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3b3db85a0f8bbb3479e44d1e518fbd2c, type: 2}
+    - target: {fileID: 1606415981093263313, guid: 5d0d877fc17e22b48ae7185f7a306ebd, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1606415981093263313, guid: 5d0d877fc17e22b48ae7185f7a306ebd, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1606415981093263313, guid: 5d0d877fc17e22b48ae7185f7a306ebd, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5449849003969133409, guid: 5d0d877fc17e22b48ae7185f7a306ebd, type: 3}
       propertyPath: m_Name
       value: Player
