@@ -6,7 +6,7 @@ using DG.Tweening;
 public class ItemMovement : MonoBehaviour
 {
 
-    [SerializeField] ItemData itemData;
+    public ItemData itemData;
 
     void Start()
     {

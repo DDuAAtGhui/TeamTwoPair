@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FlowerController : MonoBehaviour
 {
-    [SerializeField] HPController hPController;
+    [SerializeField] HPController hpController;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +20,10 @@ public class FlowerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Item"))
         {
+            ItemData itemData = collision.GetComponent<ItemMovement>().itemData;
+
+            hpController.MaxHP += itemData.addHP;
+
             Destroy(collision.gameObject);
         }
     }
