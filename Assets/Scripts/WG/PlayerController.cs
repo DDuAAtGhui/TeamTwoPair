@@ -46,6 +46,15 @@ public class PlayerController : MonoBehaviour
     {
         if (moveDir != Vector2.zero)
         {
+            if (moveDir.x != 0 && moveDir.y != 0)
+            {
+                moveDir = new Vector2(0, 1);
+            }
+
+            if (moveDir.y < 0)
+                return;
+
+
             float angle = Mathf.Atan2(-moveDir.x, moveDir.y) * Mathf.Rad2Deg;
             flower.transform.rotation = Quaternion.Euler(0, 0, angle);
 
