@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5042586498360206194}
   - component: {fileID: 7558749953639418399}
   m_Layer: 0
-  m_Name: Item
+  m_Name: Item 3
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 287fd405d7703a54a856cc6694c0eb57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: 00d7348ff19b31540a6dbc7c1e0f580a, type: 2}
+  itemData: {fileID: 11400000, guid: 7681199158a6b68459127ecc8b888d03, type: 2}
 --- !u!212 &7743738705824543939
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -146,14 +146,14 @@ MonoBehaviour:
   targetGO: {fileID: 0}
   tweenTargetIsTargetGO: 1
   delay: 0
-  duration: 1
+  duration: 3
   easeType: 1
   easeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0
+      time: 0.5664711
+      value: -0.51651
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -161,8 +161,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 1
+      time: 1.061614
+      value: -0.5116577
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -176,20 +176,20 @@ MonoBehaviour:
   loops: -1
   id: 
   isRelative: 1
-  isFrom: 1
+  isFrom: 0
   isIndependentUpdate: 0
   autoKill: 0
   autoGenerate: 1
   isActive: 1
   isValid: 1
   target: {fileID: 6476283179678125615}
-  animationType: 2
+  animationType: 1
   targetType: 11
   forcedTargetType: 0
   autoPlay: 1
   useTargetAsV3: 0
   endValueFloat: 0
-  endValueV3: {x: 0, y: 2, z: 0}
+  endValueV3: {x: 70, y: 0, z: 0}
   endValueV2: {x: 0, y: 0}
   endValueColor: {r: 1, g: 1, b: 1, a: 1}
   endValueString: 
@@ -201,9 +201,9 @@ MonoBehaviour:
     height: 0
   endValueTransform: {fileID: 0}
   optionalBool0: 0
-  optionalBool1: 0
-  optionalFloat0: 0
-  optionalInt0: 0
+  optionalBool1: 1
+  optionalFloat0: 90
+  optionalInt0: 28
   optionalRotationMode: 0
   optionalScrambleMode: 0
   optionalShakeRandomnessMode: 0

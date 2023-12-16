@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
     [Header("Move info")]
     [SerializeField] float growSpeed = 1f;
     float initialGrowSpeed;
-    [SerializeField] float damageLength = 10f;
+    [SerializeField] float damageLength = 0.1f;
+    [SerializeField] int damageMultiplier = 10;
     [HideInInspector] public static Vector2 moveDir;
     float initialDamageLength;
 
@@ -64,13 +65,16 @@ public class PlayerController : MonoBehaviour
 
             if (damageLength <= 0)
             {
+                hpController.MaxHP -= damageMultiplier;
                 damageLength = initialDamageLength;
-                hpController.MaxHP -= (int)initialDamageLength;
             }
         }
 
+
+
         flowerAnim.SetBool("isCharging", isCharging);
         flowerAnim.SetBool("isMaxCharging", isMaxCharging);
+        Debug.Log(hpController.MaxHP);
     }
 
     void OnMove(InputValue value)
@@ -156,7 +160,7 @@ public class PlayerController : MonoBehaviour
             isDashAble = false;
             dashTimer -= Time.deltaTime;
 
-            transform.position += (Vector3)moveDir * Time.deltaTime * 75f;
+            transform.position += (Vector3)moveDir * Time.deltaTime * 50f;
 
 
             if (dashTimer <= 0)
