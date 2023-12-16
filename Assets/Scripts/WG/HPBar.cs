@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class HPBar : MonoBehaviour
 {
-    [SerializeField] HPController hpController;
+    HPController hpController;
     Image image;
     void Awake()
     {
         image = GetComponent<Image>();
+        hpController = GameObject.FindObjectOfType<HPController>();
+
     }
 
     void Update()
