@@ -161,8 +161,13 @@ public class InGame : MonoBehaviour
                 var strByte = System.Text.Encoding.Default.GetString(args.BinaryUserData);
                 Message msg = JsonUtility.FromJson<Message>(strByte);
                 Debug.Log($"서버에서 받은 데이터 : {args.From.NickName} : {msg.ToString()}");
+
+
+                Debug.Log(args.From.NickName + "님은 현재 : " + msg.height + "m 입니다");
+                GameManager.Instance.GetMessage(args.From.NickName, msg.height);
             };
         }
+
         Message message = new Message();
         message.height = height;
 
