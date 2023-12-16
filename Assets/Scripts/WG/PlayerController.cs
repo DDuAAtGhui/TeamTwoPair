@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
         if (hpController.CurrentHP > 0 && isDashAble)
         {
             StartCoroutine(Dash());
-            hpController.CurrentHP -= 10;
+            hpController.CurrentHP -= 40;
         }
     }
 
@@ -143,8 +143,8 @@ public class PlayerController : MonoBehaviour
             yield return null;
             if (!isAttackAble)
             {
-                isAttackAble = true;
                 yield return new WaitForSeconds(1f);
+                isAttackAble = true;
             }
         }
     }
@@ -172,7 +172,7 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator ToggleDashAble()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         isDashAble = true;
     }
 
