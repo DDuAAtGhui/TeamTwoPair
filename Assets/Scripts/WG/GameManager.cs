@@ -36,6 +36,11 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        InGame.GetInstance().SendData();
+
+        if (GameObject.Find("ServerManager"))
+            InGame.GetInstance().SendData();
+
+        else
+            Debug.Log("서버매니저 씬에 존재하지않음");
     }
 }
