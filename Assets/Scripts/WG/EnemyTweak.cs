@@ -17,7 +17,7 @@ public class EnemyTweak : MonoBehaviour
             int i = 0;
 
 
-            Instantiate(dummies[i], transform.position, Quaternion.identity, transform);
+            dummies[i] = Instantiate(dummies[i], transform.position, Quaternion.identity, transform);
 
 
 
