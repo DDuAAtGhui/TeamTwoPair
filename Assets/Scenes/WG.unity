@@ -387,6 +387,90 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3211528756439306151, guid: 1bde009fab6c07f46ad0d295120bdb4f, type: 3}
+      propertyPath: path.length
+      value: 173.11395
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211528756439306151, guid: 1bde009fab6c07f46ad0d295120bdb4f, type: 3}
+      propertyPath: lastSrcPosition.x
+      value: -54.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211528756439306151, guid: 1bde009fab6c07f46ad0d295120bdb4f, type: 3}
+      propertyPath: lastSrcPosition.y
+      value: 47.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211528756439306151, guid: 1bde009fab6c07f46ad0d295120bdb4f, type: 3}
+      propertyPath: lastSrcPosition.z
+      value: 0.0000001759272
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211528756439306151, guid: 1bde009fab6c07f46ad0d295120bdb4f, type: 3}
+      propertyPath: path.wps.Array.data[0].x
+      value: -54.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211528756439306151, guid: 1bde009fab6c07f46ad0d295120bdb4f, type: 3}
+      propertyPath: path.wps.Array.data[0].y
+      value: 47.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211528756439306151, guid: 1bde009fab6c07f46ad0d295120bdb4f, type: 3}
+      propertyPath: path.wps.Array.data[0].z
+      value: 0.0000001759272
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211528756439306151, guid: 1bde009fab6c07f46ad0d295120bdb4f, type: 3}
+      propertyPath: path.wpLengths.Array.data[1]
+      value: 24.071487
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211528756439306151, guid: 1bde009fab6c07f46ad0d295120bdb4f, type: 3}
+      propertyPath: path.timesTable.Array.data[1]
+      value: 0.13904996
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211528756439306151, guid: 1bde009fab6c07f46ad0d295120bdb4f, type: 3}
+      propertyPath: path.timesTable.Array.data[2]
+      value: 0.23803705
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211528756439306151, guid: 1bde009fab6c07f46ad0d295120bdb4f, type: 3}
+      propertyPath: path.timesTable.Array.data[3]
+      value: 0.2853759
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211528756439306151, guid: 1bde009fab6c07f46ad0d295120bdb4f, type: 3}
+      propertyPath: path.timesTable.Array.data[4]
+      value: 0.36789304
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211528756439306151, guid: 1bde009fab6c07f46ad0d295120bdb4f, type: 3}
+      propertyPath: path.timesTable.Array.data[5]
+      value: 0.462649
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211528756439306151, guid: 1bde009fab6c07f46ad0d295120bdb4f, type: 3}
+      propertyPath: path.timesTable.Array.data[6]
+      value: 0.5173926
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211528756439306151, guid: 1bde009fab6c07f46ad0d295120bdb4f, type: 3}
+      propertyPath: path.timesTable.Array.data[7]
+      value: 0.57667404
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211528756439306151, guid: 1bde009fab6c07f46ad0d295120bdb4f, type: 3}
+      propertyPath: path.timesTable.Array.data[8]
+      value: 0.63549256
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211528756439306151, guid: 1bde009fab6c07f46ad0d295120bdb4f, type: 3}
+      propertyPath: path.timesTable.Array.data[9]
+      value: 0.6997121
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211528756439306151, guid: 1bde009fab6c07f46ad0d295120bdb4f, type: 3}
+      propertyPath: path.timesTable.Array.data[10]
+      value: 0.75911045
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211528756439306151, guid: 1bde009fab6c07f46ad0d295120bdb4f, type: 3}
+      propertyPath: path.timesTable.Array.data[11]
+      value: 0.8160546
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211528756439306151, guid: 1bde009fab6c07f46ad0d295120bdb4f, type: 3}
+      propertyPath: path.timesTable.Array.data[12]
+      value: 0.87564975
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211528756439306151, guid: 1bde009fab6c07f46ad0d295120bdb4f, type: 3}
+      propertyPath: path.timesTable.Array.data[13]
+      value: 0.93564534
+      objectReference: {fileID: 0}
     - target: {fileID: 6476283179678125615, guid: 1bde009fab6c07f46ad0d295120bdb4f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -54.8

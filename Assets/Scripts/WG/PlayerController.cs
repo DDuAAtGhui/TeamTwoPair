@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
 
     void OnMove(InputValue value)
     {
-        if (isDash)
+        if (isDash || GameManager.instance.isDead)
             return;
 
         Vector2 dir = value.Get<Vector2>();
@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
 
     void OnFire()
     {
-        if (isDash)
+        if (isDash || GameManager.instance.isDead)
             return;
 
         StartCoroutine(AttackTweak());
@@ -113,6 +113,9 @@ public class PlayerController : MonoBehaviour
 
     void OnDash()
     {
+        if (GameManager.instance.isDead)
+            return;
+
         if (hpController.CurrentHP > 0 && isDashAble)
         {
             StartCoroutine(Dash());
