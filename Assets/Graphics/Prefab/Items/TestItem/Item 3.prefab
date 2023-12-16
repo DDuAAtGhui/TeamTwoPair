@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7558749953639418399}
   - component: {fileID: 3211528756439306151}
   m_Layer: 0
-  m_Name: Item 2
+  m_Name: Item 3
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 180.35039, y: 159.12312, z: -2.2601147}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -361,7 +361,7 @@ MonoBehaviour:
   path:
     wpLengths:
     - 0
-    - 24.071487
+    - 236.11201
     - 17.136045
     - 8.195015
     - 14.284866
@@ -376,7 +376,7 @@ MonoBehaviour:
     - 10.386081
     - 11.140688
     wps:
-    - {x: -54.8, y: 47.8, z: 0.0000001759272}
+    - {x: 180.35039, y: 159.12312, z: -2.2601147}
     - {x: -32.90496, y: 57.80219, z: 0.00000009148214}
     - {x: -24.401558, y: 42.924816, z: 0.00000009148214}
     - {x: -19.639673, y: 49.594353, z: 0.00000009148214}
@@ -395,23 +395,23 @@ MonoBehaviour:
     subdivisionsXSegment: 10
     subdivisions: 150
     controlPoints: []
-    length: 173.11395
+    length: 385.15445
     isFinalized: 1
     timesTable:
     - 0
-    - 0.13904996
-    - 0.23803705
-    - 0.2853759
-    - 0.36789304
-    - 0.462649
-    - 0.5173926
-    - 0.57667404
-    - 0.63549256
-    - 0.6997121
-    - 0.75911045
-    - 0.8160546
-    - 0.87564975
-    - 0.93564534
+    - 0.61303204
+    - 0.6575234
+    - 0.67880064
+    - 0.71588933
+    - 0.75847894
+    - 0.7830843
+    - 0.80972934
+    - 0.83616626
+    - 0.86503077
+    - 0.8917283
+    - 0.91732275
+    - 0.9441087
+    - 0.97107476
     - 1
     lengthsTable:
     - 0.41191843
@@ -573,7 +573,7 @@ MonoBehaviour:
   showIndexes: 1
   showWpLength: 0
   pathColor: {r: 1, g: 1, b: 1, a: 0.5}
-  lastSrcPosition: {x: -54.8, y: 47.8, z: 0.0000001759272}
+  lastSrcPosition: {x: 180.35039, y: 159.12312, z: -2.2601147}
   lastSrcRotation: {x: 0, y: 0, z: 0, w: 1}
   wpsDropdown: 0
   dropToFloorOffset: 0
