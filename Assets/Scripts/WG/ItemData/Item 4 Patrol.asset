@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63867ccff6af38a4c9364941793ac21f, type: 3}
-  m_Name: Item 2 Stand
+  m_Name: Item 4 Patrol
   m_EditorClassIdentifier: 
-  name: 2
+  name: 3
   icon: {fileID: -2006962151, guid: 5b82ee17326c5844dba55b7226e63c99, type: 3}
-  index: 2
-  addHP: 50
+  index: 3
+  addHP: 60
   speed: 0

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5042586498360206194}
   - component: {fileID: 7558749953639418399}
   m_Layer: 0
-  m_Name: Item 3 Patrol
+  m_Name: Item 8 Patrol
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 287fd405d7703a54a856cc6694c0eb57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: c2acd2665f704144bb4ce25f09dcafe7, type: 2}
+  itemData: {fileID: 11400000, guid: 32371aa1381f94059862d75ee77cc0c9, type: 2}
 --- !u!212 &7743738705824543939
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -89,7 +89,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 1695105729, guid: c2072b464a94e4648a51ea92d9996d50, type: 3}
+  m_Sprite: {fileID: 1064112487, guid: 5b82ee17326c5844dba55b7226e63c99, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
   targetGO: {fileID: 0}
   tweenTargetIsTargetGO: 1
   delay: 0
-  duration: 2
+  duration: 1.2
   easeType: 37
   easeCurve:
     serializedVersion: 2
@@ -154,18 +154,36 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      inSlope: -0.057758953
+      outSlope: -0.057758953
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.72058177
+    - serializedVersion: 3
+      time: 0.28333586
+      value: 0.30802003
+      inSlope: -0.33546898
+      outSlope: -0.33546898
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.19310208
+    - serializedVersion: 3
+      time: 0.68333334
+      value: 0.7674529
+      inSlope: -0.20971228
+      outSlope: -0.20971228
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.42069033
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
@@ -189,7 +207,7 @@ MonoBehaviour:
   autoPlay: 1
   useTargetAsV3: 0
   endValueFloat: 0
-  endValueV3: {x: 12, y: 0, z: 0}
+  endValueV3: {x: 14, y: 0, z: 0}
   endValueV2: {x: 0, y: 0}
   endValueColor: {r: 1, g: 1, b: 1, a: 1}
   endValueString: 
@@ -244,7 +262,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.8, y: 4.8}
+    oldSize: {x: 2.6, y: 2.8}
     newSize: {x: 12, y: 14}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

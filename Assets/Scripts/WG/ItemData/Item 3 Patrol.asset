@@ -15,5 +15,5 @@ MonoBehaviour:
   name: 3
   icon: {fileID: -2006962151, guid: 5b82ee17326c5844dba55b7226e63c99, type: 3}
   index: 3
-  addHP: 30
+  addHP: 40
   speed: 0
