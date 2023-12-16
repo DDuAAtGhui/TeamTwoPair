@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [Header("Move info")]
-    [SerializeField] float growSpeed = 1f;
+    [SerializeField] public float growSpeed = 1f;
     float initialGrowSpeed;
     [SerializeField] float damageLength = 0.1f;
     [SerializeField] float damageMultiplier = 10f;
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
 
             if (damageLength <= 0)
             {
-                hpController.MaxHP -= damageMultiplier;
+                hpController.MaxHP -= damageMultiplier / (hpController.InitialHP * 2 / hpController.MaxHP);
                 damageLength = initialDamageLength;
             }
         }
@@ -143,8 +143,8 @@ public class PlayerController : MonoBehaviour
             yield return null;
             if (!isAttackAble)
             {
+                yield return new WaitForSeconds(0.2f);
                 isAttackAble = true;
-                yield return new WaitForSeconds(1f);
             }
         }
     }
