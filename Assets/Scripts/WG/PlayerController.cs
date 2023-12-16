@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
             if (damageLength <= 0)
             {
                 damageLength = initialDamageLength;
-                hpController.MaxHP -= 10;
+                hpController.MaxHP -= (int)initialDamageLength;
             }
         }
 
