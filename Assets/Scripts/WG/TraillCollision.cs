@@ -8,13 +8,14 @@ public class TraillCollision : MonoBehaviour
     TrailRenderer myTrail;
 
     //트레일 렌더러 특성상 콜라이더를 다른오브젝트에 붙이고 그걸 가져오기
-    [SerializeField] GameObject coliderGameObject;
+    GameObject coliderGameObject;
 
     EdgeCollider2D myCollider;
 
     void Awake()
     {
         myTrail = GetComponent<TrailRenderer>();
+        coliderGameObject = GameObject.Find("TrailStandard");
         coliderGameObject.AddComponent<EdgeCollider2D>();
         myCollider = coliderGameObject.GetComponent<EdgeCollider2D>();
 
