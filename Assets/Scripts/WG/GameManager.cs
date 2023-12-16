@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (GameObject.Find("ServerManager"))
+        if (GameObject.Find("ServerManager") && InGame.GetInstance().isInGame)
             InGame.GetInstance().SendData(playerTF.transform.position.y);
 
 

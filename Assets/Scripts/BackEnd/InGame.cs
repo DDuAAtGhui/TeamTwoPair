@@ -13,6 +13,8 @@ public class InGame : MonoBehaviour
 {
     static InGame instance;
 
+    public bool isInGame = false;
+
     private int[] grade;
 
     public HashSet<string> deadPlayerCheck = new HashSet<string>();
@@ -49,7 +51,7 @@ public class InGame : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyUp(KeyCode.P))
+        if (GameManager.instance && GameManager.instance.isWin)
         {
             SendImWin();
         }
@@ -70,6 +72,7 @@ public class InGame : MonoBehaviour
 
     public void JoinGameServer(MatchInGameRoomInfo gameRoomInfo)
     {
+        isInGame = true;
         Backend.Match.OnSessionJoinInServer = (JoinChannelEventArgs args) =>
         {
             if (args.ErrInfo == ErrorInfo.Success)
@@ -187,17 +190,17 @@ public class InGame : MonoBehaviour
 
                 if (msg.action == 0)
                 {
-                    if(deadPlayerCheck.Contains(args.From.NickName))
+                    if (deadPlayerCheck.Contains(args.From.NickName))
                     {
                         Debug.Log($"{args.From.NickName}죽은 캐릭터 입니다.");
                         return;
                     }
 
-                    if(playerDataDic.ContainsKey(args.From.NickName))
+                    if (playerDataDic.ContainsKey(args.From.NickName))
                     {
                         playerDataDic[args.From.NickName].height = msg.height;
 
-                        Debug.Log($"플레이어 위치 업데이트 : {args.From.NickName} : " + msg.height );
+                        Debug.Log($"플레이어 위치 업데이트 : {args.From.NickName} : " + msg.height);
                     }
                     else
                     {
@@ -219,6 +222,7 @@ public class InGame : MonoBehaviour
                 }
                 else if (msg.action == 2)
                 {
+                    isInGame = false;
                     MatchEnd(args.From.SessionId);
                 }
                 else
@@ -227,6 +231,8 @@ public class InGame : MonoBehaviour
                 }
             };
         }
+
+        Debug.Log("변경");
 
         Message message = new Message();
         message.height = height;
@@ -255,6 +261,7 @@ public class InGame : MonoBehaviour
         var jsonData = JsonUtility.ToJson(message); // 클래스를 json으로 변환해주는 함수
         var dataByte = System.Text.Encoding.UTF8.GetBytes(jsonData); // json을 byte[]로 변환해주는 함수
         Backend.Match.SendDataToInGameRoom(dataByte);
+        isInGame = false;
     }
 
     public void MatchEnd(SessionId winnerSessionId)
@@ -283,7 +290,8 @@ public class InGame : MonoBehaviour
             }
 
             // GIF 뿌리기
-            SceneManager.LoadScene("HY");
+            //SceneManager.LoadScene("HY");
+            StopAllCoroutines();
         };
 
         Debug.Log("8-1. MatchEnd 호출");
@@ -292,8 +300,8 @@ public class InGame : MonoBehaviour
         matchGameResult.m_winners = new List<SessionId>();
 
 
-        
-        while(playerDataDic.Count > 0)
+
+        while (playerDataDic.Count > 0)
         {
             float tempHeight = 0;
             string tempNick = "";
@@ -311,12 +319,15 @@ public class InGame : MonoBehaviour
             matchGameResult.m_winners.Add(playerDataDic[tempNick].sessionId);
             playerDataDic.Remove(tempNick);
         }
-        
-        while(deadmanStack.Count > 0)
+
+        while (deadmanStack.Count > 0)
         {
             matchGameResult.m_winners.Add(deadmanStack.Pop());
         }
 
         Backend.Match.MatchEnd(matchGameResult);
+
+        
+        //애니메이션 재생
     }
 }
