@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
         flowerAnim.SetBool("isCharging", isCharging);
         flowerAnim.SetBool("isMaxCharging", isMaxCharging);
-        Debug.Log(hpController.MaxHP);
+        // Debug.Log(hpController.MaxHP);
     }
 
     void OnMove(InputValue value)
