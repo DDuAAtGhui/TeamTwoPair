@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float growSpeed = 1f;
     float initialGrowSpeed;
     [SerializeField] float damageLength = 10f;
-    Vector2 moveDir;
+    [HideInInspector] public static Vector2 moveDir;
     float initialDamageLength;
 
     [Header("Attack Info")]
@@ -21,13 +21,20 @@ public class PlayerController : MonoBehaviour
     bool isCharging = false;
     bool isMaxCharging = false;
     bool isAttackAble = true;
-    bool isDash = false;
+    [SerializeField] bool isDash = false;
+    [SerializeField] bool isDashAble = true;
+    [SerializeField] float dashTimer = 0.1f;
 
     [Header("Components")]
     [SerializeField] HPController hpController;
+    [SerializeField] GameObject flower;
     [SerializeField] Animator flowerAnim;
+    Rigidbody2D rb;
 
-
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
     void Start()
     {
         initialGrowSpeed = growSpeed;
@@ -39,6 +46,18 @@ public class PlayerController : MonoBehaviour
     {
         if (moveDir != Vector2.zero)
         {
+            if (moveDir.x != 0 && moveDir.y != 0)
+            {
+                moveDir = new Vector2(0, 1);
+            }
+
+            if (moveDir.y < 0)
+                return;
+
+
+            float angle = Mathf.Atan2(-moveDir.x, moveDir.y) * Mathf.Rad2Deg;
+            flower.transform.rotation = Quaternion.Euler(0, 0, angle);
+
             transform.position += (Vector3)moveDir * Time.deltaTime * growSpeed;
 
             damageLength -= Time.deltaTime;
@@ -46,17 +65,19 @@ public class PlayerController : MonoBehaviour
             if (damageLength <= 0)
             {
                 damageLength = initialDamageLength;
-                hpController.MaxHP -= 10;
+                hpController.MaxHP -= (int)initialDamageLength;
             }
         }
 
         flowerAnim.SetBool("isCharging", isCharging);
         flowerAnim.SetBool("isMaxCharging", isMaxCharging);
-        Debug.Log(isAttackAble);
     }
 
     void OnMove(InputValue value)
     {
+        if (isDash)
+            return;
+
         Vector2 dir = value.Get<Vector2>();
         moveDir = new Vector2(dir.x, dir.y);
     }
@@ -74,6 +95,15 @@ public class PlayerController : MonoBehaviour
         isFire = false;
         isCharging = false;
         growSpeed = initialGrowSpeed;
+    }
+
+    void OnDash()
+    {
+        if (hpController.CurrentHP > 0 && isDashAble)
+        {
+            StartCoroutine(Dash());
+            hpController.CurrentHP -= 10;
+        }
     }
 
     IEnumerator AttackTweak()
@@ -116,4 +146,32 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    IEnumerator Dash()
+    {
+        isDash = true;
+
+        while (isDash)
+        {
+            yield return null;
+            isDashAble = false;
+            dashTimer -= Time.deltaTime;
+
+            transform.position += (Vector3)moveDir * Time.deltaTime * 75f;
+
+
+            if (dashTimer <= 0)
+            {
+                isDash = false;
+                dashTimer = 0.1f;
+            }
+        }
+
+        StartCoroutine(ToggleDashAble());
+    }
+    IEnumerator ToggleDashAble()
+    {
+        yield return new WaitForSeconds(1f);
+        isDashAble = true;
+    }
+
 }

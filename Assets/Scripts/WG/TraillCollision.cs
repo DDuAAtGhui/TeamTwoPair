@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(TrailRenderer))]
 public class TraillCollision : MonoBehaviour
