@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     float initialDamageLength;
 
     [SerializeField] HPController hpController;
+
+    [SerializeField] Animator flowerAnim;
     void Start()
     {
         initialDamageLength = damageLength;
@@ -38,5 +40,10 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 dir = value.Get<Vector2>();
         moveDir = new Vector2(dir.x, dir.y);
+    }
+
+    void OnFire()
+    {
+        flowerAnim.SetBool("PRESS", true);
     }
 }
