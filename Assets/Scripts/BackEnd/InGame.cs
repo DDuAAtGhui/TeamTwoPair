@@ -164,7 +164,7 @@ public class InGame : MonoBehaviour
 
 
                 Debug.Log(args.From.NickName + "님은 현재 : " + msg.height + "m 입니다");
-                GameManager.Instance.GetMessage(args.From.NickName, msg.height);
+                GameManager.instance.GetMessage(args.From.NickName, msg.height);
             };
         }
 
