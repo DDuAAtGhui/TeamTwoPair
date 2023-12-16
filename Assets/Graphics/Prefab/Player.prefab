@@ -159,15 +159,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec986bbe52ac1646be59b7f32150882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   growSpeed: 10
   damageLength: 0.05
   damageMultiplier: 1
+=======
+  growSpeed: 5
+  damageLength: 10
+>>>>>>> JJ
   chargingTime: 1.5
   chargingTimer: 0
   isFire: 0
   isDash: 0
   isDashAble: 1
-  dashTimer: 0.1
+  dashTimer: 0.05
   hpController: {fileID: 1538081554541238538}
   flower: {fileID: 516485797646151130}
   flowerAnim: {fileID: 8683215697737839791}
