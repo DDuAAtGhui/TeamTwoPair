@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectInfos:
-  - goPrefab: {fileID: 5363232927586198523, guid: 443308ba832a7bd4c9c2bd6723b3e225, type: 3}
+  - goPrefab: {fileID: 0}
     count: 1000

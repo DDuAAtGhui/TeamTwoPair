@@ -156,7 +156,7 @@ public class PlayerController : MonoBehaviour
             isDashAble = false;
             dashTimer -= Time.deltaTime;
 
-            transform.position += transform.position.normalized * Time.deltaTime * 50f;
+            transform.position += (Vector3)moveDir * Time.deltaTime * 75f;
 
 
             if (dashTimer <= 0)
