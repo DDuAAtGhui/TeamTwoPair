@@ -160,7 +160,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   growSpeed: 10
-  damageLength: 1
+  damageLength: 0.05
+  damageMultiplier: 1
   chargingTime: 1.5
   chargingTimer: 0
   isFire: 0
