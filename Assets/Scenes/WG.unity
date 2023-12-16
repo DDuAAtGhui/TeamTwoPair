@@ -1286,7 +1286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 12
   flyUpTime: 2
-  rotateSpeed: 6
+  rotateSpeed: 4
 --- !u!1001 &936899785
 PrefabInstance:
   m_ObjectHideFlags: 0
