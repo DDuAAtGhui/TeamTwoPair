@@ -754,6 +754,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dummies:
   - {fileID: 3918185327661244223, guid: 9bbdab2f12ed5074b84c46a3ac8a170a, type: 3}
+  - {fileID: 3918185327661244223, guid: 9bbdab2f12ed5074b84c46a3ac8a170a, type: 3}
+  - {fileID: 3918185327661244223, guid: 9bbdab2f12ed5074b84c46a3ac8a170a, type: 3}
 --- !u!1001 &1116047451
 PrefabInstance:
   m_ObjectHideFlags: 0
