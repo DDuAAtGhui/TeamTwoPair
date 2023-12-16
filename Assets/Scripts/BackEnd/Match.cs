@@ -75,6 +75,7 @@ public class Match : MonoBehaviour
         Debug.Log("2-1. CreateMatchRoom 요청");
         Backend.Match.CreateMatchRoom();
     }
+    int index = 1;
 
     public void RequestMatchMaking()
     {
@@ -85,7 +86,7 @@ public class Match : MonoBehaviour
 
                 Debug.Log("3-2. OnMatchMakingResponse 매칭 신청 진행중");
 
-                int second = matchCardList[int.Parse("0")].transit_to_sandbox_timeout_ms / 1000;
+                int second = matchCardList[index].transit_to_sandbox_timeout_ms / 1000;
 
                 if (second > 0)
                 {
@@ -108,7 +109,6 @@ public class Match : MonoBehaviour
 
         Debug.Log("3-1. RequestMatchMaking 매칭 신청 시작");
 
-        int index = int.Parse("0");
         Backend.Match.RequestMatchMaking(matchCardList[index].matchType, MatchModeType.Melee, matchCardList[index].inDate);
     }
 

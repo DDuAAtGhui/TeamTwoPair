@@ -47,6 +47,14 @@ public class InGame : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyUp(KeyCode.P))
+        {
+            SendImWin();
+        }
+    }
+
     MatchInGameRoomInfo currentGameRoomInfo;
     Dictionary<string, MatchUserGameRecord> inGameUserList = new Dictionary<string, MatchUserGameRecord>();
 
@@ -181,21 +189,26 @@ public class InGame : MonoBehaviour
                 {
                     if(deadPlayerCheck.Contains(args.From.NickName))
                     {
+                        Debug.Log($"{args.From.NickName}죽은 캐릭터 입니다.");
                         return;
                     }
 
                     if(playerDataDic.ContainsKey(args.From.NickName))
                     {
-                        PlayerData playerData = new PlayerData();
-                        playerData.nickname = args.From.NickName;
-                        playerData.sessionId = args.From.SessionId;
-                        playerData.height = height;
+                        playerDataDic[args.From.NickName].height = msg.height;
 
-                        playerDataDic.Add(args.From.NickName, playerData);
+                        Debug.Log($"플레이어 위치 업데이트 : {args.From.NickName} : " + msg.height );
                     }
                     else
                     {
-                        playerDataDic[args.From.NickName].height = height;
+
+                        PlayerData playerData = new PlayerData();
+                        playerData.nickname = args.From.NickName;
+                        playerData.sessionId = args.From.SessionId;
+                        playerData.height = msg.height;
+
+                        playerDataDic.Add(args.From.NickName, playerData);
+                        Debug.Log("플레이어 새로 할당 : " + playerData.nickname);
                     }
                 }
                 else if (msg.action == 1)
@@ -218,6 +231,7 @@ public class InGame : MonoBehaviour
         Message message = new Message();
         message.height = height;
 
+        message.action = 0;
         var jsonData = JsonUtility.ToJson(message); // 클래스를 json으로 변환해주는 함수
         var dataByte = System.Text.Encoding.UTF8.GetBytes(jsonData); // json을 byte[]로 변환해주는 함수
         Backend.Match.SendDataToInGameRoom(dataByte);
@@ -267,6 +281,9 @@ public class InGame : MonoBehaviour
             {
                 Debug.LogError("8-2. OnMatchResult 실패 : " + args.ErrInfo.ToString());
             }
+
+            // GIF 뿌리기
+            SceneManager.LoadScene("HY");
         };
 
         Debug.Log("8-1. MatchEnd 호출");
@@ -283,6 +300,7 @@ public class InGame : MonoBehaviour
 
             foreach (var playerData in playerDataDic)
             {
+                Debug.Log($"결과 : {playerData.Key} : {playerData.Value.height}");
                 if (playerData.Value.height > tempHeight)
                 {
                     tempHeight = playerData.Value.height;
