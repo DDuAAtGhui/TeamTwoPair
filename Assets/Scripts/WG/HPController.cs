@@ -6,11 +6,13 @@ using UnityEngine.UI;
 public class HPController : MonoBehaviour
 {
     float maxHP = 100.0f;
+    float initialHP;
     [SerializeField] float currentHP = 0;
     [SerializeField] float autoRecoveryHp = 0.9f;
     void Start()
     {
         currentHP = maxHP;
+        initialHP = maxHP;
     }
 
     private void Update()
@@ -28,5 +30,6 @@ public class HPController : MonoBehaviour
 
     public float MaxHP { get { return maxHP; } set { maxHP = value; } }
     public float CurrentHP { get { return currentHP; } set { currentHP = value; } }
+    public float InitialHP { get { return initialHP; } }
 
 }
