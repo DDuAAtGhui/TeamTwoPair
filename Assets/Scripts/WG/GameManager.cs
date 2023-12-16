@@ -12,6 +12,10 @@ public class GameManager : MonoBehaviour
 
     public Queue<GameObject> deadmen = new Queue<GameObject>();
 
+    public Dictionary<string, float> heightDic = new Dictionary<string, float>();
+
+    Transform playerTF;
+
     public static GameManager Instance
     {
         get
@@ -31,6 +35,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        playerTF = GameObject.FindWithTag("Player").transform;
+
         if (instantiateOnLoad.Count <= 0)
             return;
 
@@ -43,7 +49,7 @@ public class GameManager : MonoBehaviour
     {
 
         if (GameObject.Find("ServerManager"))
-            InGame.GetInstance().SendData();
+            InGame.GetInstance().SendData(playerTF.position.y);
 
         else
             Debug.Log("서버매니저 씬에 존재하지않음");

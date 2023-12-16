@@ -10,6 +10,7 @@ public class FairyController : MonoBehaviour
     [SerializeField] float speed = 12f;
     [SerializeField] float flyUpTime = 2f;
     [SerializeField] float rotateSpeed = 6f;
+
     Collider2D coll;
     private void Awake()
     {
@@ -60,11 +61,12 @@ public class FairyController : MonoBehaviour
 
     IEnumerator Rotate()
     {
+        Vector2 rotateCenter = transform.position + Vector3.up * -4f;
         while (coll.enabled)
         {
             yield return null;
 
-            transform.RotateAround(new Vector2(-6f, 18f), Vector3.forward, rotateSpeed);
+            transform.RotateAround(rotateCenter, Vector3.forward, rotateSpeed);
         }
     }
 }
