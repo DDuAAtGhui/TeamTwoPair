@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7558749953639418399}
   - component: {fileID: 3211528756439306151}
   m_Layer: 0
-  m_Name: Item 3
+  m_Name: Item 3 Line
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 8825130898396314544}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 180.35039, y: 159.12312, z: -2.2601147}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -361,7 +361,7 @@ MonoBehaviour:
   path:
     wpLengths:
     - 0
-    - 236.11201
+    - 66.51187
     - 17.136045
     - 8.195015
     - 14.284866
@@ -376,7 +376,7 @@ MonoBehaviour:
     - 10.386081
     - 11.140688
     wps:
-    - {x: 180.35039, y: 159.12312, z: -2.2601147}
+    - {x: 0, y: 0, z: 0}
     - {x: -32.90496, y: 57.80219, z: 0.00000009148214}
     - {x: -24.401558, y: 42.924816, z: 0.00000009148214}
     - {x: -19.639673, y: 49.594353, z: 0.00000009148214}
@@ -395,23 +395,23 @@ MonoBehaviour:
     subdivisionsXSegment: 10
     subdivisions: 150
     controlPoints: []
-    length: 385.15445
+    length: 215.55434
     isFinalized: 1
     timesTable:
     - 0
-    - 0.61303204
-    - 0.6575234
-    - 0.67880064
-    - 0.71588933
-    - 0.75847894
-    - 0.7830843
-    - 0.80972934
-    - 0.83616626
-    - 0.86503077
-    - 0.8917283
-    - 0.91732275
-    - 0.9441087
-    - 0.97107476
+    - 0.30856198
+    - 0.38805956
+    - 0.42607787
+    - 0.49234825
+    - 0.56844777
+    - 0.61241287
+    - 0.6600225
+    - 0.70726025
+    - 0.7588356
+    - 0.80653906
+    - 0.8522715
+    - 0.900133
+    - 0.9483161
     - 1
     lengthsTable:
     - 0.41191843
@@ -573,7 +573,7 @@ MonoBehaviour:
   showIndexes: 1
   showWpLength: 0
   pathColor: {r: 1, g: 1, b: 1, a: 0.5}
-  lastSrcPosition: {x: 180.35039, y: 159.12312, z: -2.2601147}
+  lastSrcPosition: {x: 0, y: 0, z: 0}
   lastSrcRotation: {x: 0, y: 0, z: 0, w: 1}
   wpsDropdown: 0
   dropToFloorOffset: 0
