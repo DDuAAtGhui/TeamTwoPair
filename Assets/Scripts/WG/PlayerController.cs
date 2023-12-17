@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
 
             if (damageLength <= 0)
             {
-                float hpDecrease = damageMultiplier / (hpController.InitialHP * 2 / hpController.MaxHP);
+                float hpDecrease = damageMultiplier / (hpController.InitialHP * 1.25f / hpController.MaxHP);
 
                 hpDecrease = Mathf.Clamp(hpDecrease, damageMultiplier, float.MaxValue);
 
