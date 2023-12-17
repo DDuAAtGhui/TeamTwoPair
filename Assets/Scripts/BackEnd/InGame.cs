@@ -51,13 +51,15 @@ public class InGame : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance && GameManager.instance.isWin)
+        if (GameManager.instance && GameManager.instance.isWin && isInGame)
         {
             SendImWin();
+            isInGame = false;
         }
-        if (GameManager.instance && GameManager.instance.isDead)
+        if (GameManager.instance && GameManager.instance.isDead && isInGame)
         {
             SendImDead();
+            isInGame = false;
         }
     }
 
