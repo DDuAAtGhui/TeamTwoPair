@@ -41,6 +41,10 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        if (isWin)
+        {
+            InGame.GetInstance().SendImWin();
+        }
         if (isDead)
         {
             deadSceneChangeTImer -= Time.deltaTime;
@@ -50,9 +54,11 @@ public class GameManager : MonoBehaviour
                 deadSceneChangeTImer = 3f;
                 SceneManager.LoadScene(0);
             }
+
+            InGame.GetInstance().SendImDead();
         }
 
-        if(isGaming)
+        if (isGaming)
         {
             InGame.GetInstance().SendData(playerTF.transform.position.y);
         }
