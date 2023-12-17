@@ -301,6 +301,10 @@ public class InGame : MonoBehaviour
 
             GameManager.instance.isGaming = false;
 
+            if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("Ending"))
+                SceneManager.LoadScene("Ending");
+
+
             // GIF »Ñ¸®±â
             //SceneManager.LoadScene("HY");
             StopAllCoroutines();

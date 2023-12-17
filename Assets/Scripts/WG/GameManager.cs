@@ -41,12 +41,6 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (isWin)
-        {
-            if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("Ending"))
-                SceneManager.LoadScene("Ending");
-        }
-
         if (isDead)
         {
             deadSceneChangeTImer -= Time.deltaTime;
