@@ -313,6 +313,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2767991648156274938}
     m_Modifications:
+    - target: {fileID: 1197783639333497975, guid: 5ed590bb44cef2d4c904ed60bc73ee4b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 20.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394124106814651938, guid: 5ed590bb44cef2d4c904ed60bc73ee4b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3478293755136726099, guid: 5ed590bb44cef2d4c904ed60bc73ee4b, type: 3}
       propertyPath: m_Name
       value: GameObject
