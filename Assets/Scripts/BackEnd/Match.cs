@@ -124,6 +124,7 @@ public class Match : MonoBehaviour
 
     public void GetMatchList()
     {
+        InGame.GetInstance().enabled = true;
         matchCardList.Clear();
 
         Backend.Match.GetMatchList(callback =>

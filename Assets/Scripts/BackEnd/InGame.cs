@@ -55,6 +55,10 @@ public class InGame : MonoBehaviour
         {
             SendImWin();
         }
+        if (GameManager.instance && GameManager.instance.isDead)
+        {
+            SendImDead();
+        }
     }
 
     MatchInGameRoomInfo currentGameRoomInfo;
@@ -153,6 +157,8 @@ public class InGame : MonoBehaviour
             Debug.Log("6-1. OnMatchInGameStart 인게임 시작");
             Debug.Log(userListString);
             Debug.Log("데이터를 보낼 수 있습니다!");
+
+            GameManager.instance.isGaming = true;
         };
 
         Debug.Log($"5-1. JoinGameRoom 게임룸 접속 요청 : 토큰({currentGameRoomInfo.m_inGameRoomToken}");
@@ -276,6 +282,8 @@ public class InGame : MonoBehaviour
             {
                 Debug.LogError("OnLeaveInGameServer 인게임 서버 접속 종료 : " + args.ErrInfo + " / " + args.Reason);
             }
+
+            GameManager.instance.isGaming = false;
         };
 
         Backend.Match.OnMatchResult = (MatchResultEventArgs args) =>
@@ -288,6 +296,8 @@ public class InGame : MonoBehaviour
             {
                 Debug.LogError("8-2. OnMatchResult 실패 : " + args.ErrInfo.ToString());
             }
+
+            GameManager.instance.isGaming = false;
 
             // GIF 뿌리기
             //SceneManager.LoadScene("HY");
@@ -309,6 +319,7 @@ public class InGame : MonoBehaviour
             foreach (var playerData in playerDataDic)
             {
                 Debug.Log($"결과 : {playerData.Key} : {playerData.Value.height}");
+
                 if (playerData.Value.height > tempHeight)
                 {
                     tempHeight = playerData.Value.height;
@@ -327,7 +338,6 @@ public class InGame : MonoBehaviour
 
         Backend.Match.MatchEnd(matchGameResult);
 
-        
-        //애니메이션 재생
+
     }
 }
