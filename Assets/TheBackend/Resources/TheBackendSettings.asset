@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 660911240, guid: f624596d5fe1bd5459a5da424a8abc1b, type: 3}
   m_Name: TheBackendSettings
   m_EditorClassIdentifier: 
-  clientAppID: 21a54d20-9b59-11ee-9f65-b5daf02063d76482
-  signatureKey: 21a54d21-9b59-11ee-9f65-b5daf02063d76482
+  clientAppID: 
+  signatureKey: 
   functionAuthKey: 
   packageName: com.DefaultCompany.TeamTwoPair
   isAllPlatform: 1
